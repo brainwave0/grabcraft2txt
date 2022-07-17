@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+url=$1
+path=$2
+id=$(curl --silent $url | grep -P 'myRenderObject_(\d+)' | sed -E 's/.*[^0-9]([0-9]+)[^0-9].*/\1/g')
+curl --silent https://www.grabcraft.com/js/RenderObject/myRenderObject_$id.js | grep -Po '\{.*' | jq --raw-output '[[.[][][]]|sort_by((.y|tonumber),-(.z|tonumber),-(.x|tonumber))[]|{x,y,z,name}]' | add_air.hs > $path
