@@ -14,6 +14,12 @@ Create step-by-step instructions from GrabCraft models.
     - unordered-containers
     - interpolate
 
+### Installation on Arch Linux
+
+```shell
+# pacman -S --needed grep sed jq ghc haskell-aeson haskell-unordered-containers haskell-interpolate
+```
+
 ## Usage Example
 
 ```shell
